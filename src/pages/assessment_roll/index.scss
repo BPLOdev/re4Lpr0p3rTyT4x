@@ -1,0 +1,27 @@
+#root {
+  max-width: 100%;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding-top: 70px;
+  text-align: center;
+  background-color: #ffffff;
+  box-sizing: border-box; /* Ensures padding and borders are included in the element's dimensions */
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 3px;
+  .table-title{
+    display: block;
+    text-align: start;
+    h3{
+      margin: 0;
+    }
+
+    p{
+      margin: 0;
+    }
+  }
+}
