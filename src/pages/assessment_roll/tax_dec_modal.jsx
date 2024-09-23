@@ -8,12 +8,10 @@ import CreateNewFolderOutlinedIcon from "@mui/icons-material/CreateNewFolderOutl
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { height, maxHeight } from "@mui/system";
-import { Padding } from "@mui/icons-material";
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import FormControl from '@mui/material/FormControl';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -27,6 +25,7 @@ const style = {
   borderRadius: '10px',
   boxShadow: 24,
 };
+
 
 const boxStyle = {
   display: 'flex',
@@ -74,13 +73,14 @@ export default function TaxDecModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
+        
         <Box sx={style}>
-          <Box sx={{display: 'flex', justifyContent: 'center', margin: 0, p: 1.5, backgroundColor: "rgba(69, 116, 204)", flexShrink: 0,}}>
+          <Box sx={{display: 'flex', justifyContent: 'center', margin: 0, p: 2.5, backgroundColor: "rgba(69, 116, 204)", flexShrink: 0,}}>
             <Typography variant="h6" component="h2" sx={{color: '#ffffff'}}>
-              TAX DECLARATION OF REAL PROPERTY
+              <DialogTitle>TAX DECLARATION OF REAL PROPERTY</DialogTitle>
             </Typography>
           </Box>
-          <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: 0, p: 3}}>
+          <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: 0, p: 3,}}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: '10px' }}>
               <TextField id="outlined-basic" label="T.D. No." variant="outlined" />
               <TextField id="outlined-basic" label="Property Identification No." variant="outlined" />
