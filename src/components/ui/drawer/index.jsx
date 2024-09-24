@@ -94,7 +94,7 @@ const Drawer = styled(MuiDrawer, {
 const icons = {
   "ASSESSOR OFFICE": <ListAltOutlinedIcon sx={{ fontSize: 32 }} />,
   "LANDTAX DIVISION": <AssessmentOutlinedIcon sx={{ fontSize: 32 }} />,
-  "CASH DEVISION": <ArchiveOutlinedIcon sx={{ fontSize: 32 }} />,
+  "CASH DIVISION": <ArchiveOutlinedIcon sx={{ fontSize: 32 }} />,
 };
 
 export default function MiniDrawer() {
@@ -161,7 +161,7 @@ export default function MiniDrawer() {
         <DrawerHeader sx={{ height: "76px" }}></DrawerHeader>
         <Divider />
         <List>
-          {["ASSESSOR OFFICE", "LANDTAX DIVISION", "CASH DEVISION"].map(
+          {["ASSESSOR OFFICE", "LANDTAX DIVISION", "CASH DIVISION"].map(
             (text) => (
               <ListItem key={text} disablePadding sx={{ display: "block" }}>
                 <ListItemButton

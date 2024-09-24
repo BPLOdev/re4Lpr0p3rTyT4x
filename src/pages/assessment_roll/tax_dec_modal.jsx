@@ -1,39 +1,32 @@
-import * as React from "react";
+import * as React from 'react';
 import '../assessment_roll/tax_dec_modal.scss'
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import CreateNewFolderOutlinedIcon from "@mui/icons-material/CreateNewFolderOutlined";
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import CreateNewFolderOutlinedIcon from "@mui/icons-material/CreateNewFolderOutlined";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from '@mui/material/FormControlLabel'; // Import FormControlLabel
+import Checkbox from '@mui/material/Checkbox'; // Import Checkbox
 
+// Define boxStyle
+const boxStyle = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  mb: '10px',
+};
 
 const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  maxWidth: "100%", // Optional: Set a maximum width to prevent it from becoming too large on wider screens
-  width: "50%", // Adjust this value as needed
+  maxWidth: "100%",
+  width: "50%",
   height: "95vh",
-  overflowY: 'auto',
   bgcolor: "background.paper",
   borderRadius: '10px',
   boxShadow: 24,
+  overflowY: 'auto',
 };
-
-
-const boxStyle = {
-  display: 'flex',
-  justifyContent: 'space-between', 
-  gap: '10px', 
-  mb: '5px'
-};
-
 
 const icons = {
   "Add Taxdec": <CreateNewFolderOutlinedIcon sx={{ fontSize: 28 }} />,
@@ -41,19 +34,31 @@ const icons = {
 
 export default function TaxDecModal() {
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [scroll, setScroll] = React.useState('paper');
 
-  const [age, setAge] = React.useState('');
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handleClickOpen = (scrollType) => () => {
+    setOpen(true);
+    setScroll(scrollType);
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const descriptionElementRef = React.useRef(null);
+  React.useEffect(() => {
+    if (open) {
+      const { current: descriptionElement } = descriptionElementRef;
+      if (descriptionElement !== null) {
+        descriptionElement.focus();
+      }
+    }
+  }, [open]);
+
   return (
-    <div>
+    <React.Fragment>
       <Button
-        onClick={handleOpen}
+        onClick={handleClickOpen('paper')}
         sx={{
           backgroundColor: "rgba(69, 116, 204)",
           color: "white",
@@ -67,23 +72,32 @@ export default function TaxDecModal() {
         <CreateNewFolderOutlinedIcon sx={{ fontSize: 25, mr: 1 }} />
         Add Taxdec
       </Button>
-      <Modal
+
+      <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        scroll={scroll}
+        PaperProps={{
+          sx: { ...style }, // Apply styles directly to the Paper component inside Dialog
+        }}
       >
-        
-        <Box sx={style}>
-          <Box sx={{display: 'flex', justifyContent: 'center', margin: 0, p: 2.5, backgroundColor: "rgba(69, 116, 204)", flexShrink: 0,}}>
-            <Typography variant="h6" component="h2" sx={{color: '#ffffff'}}>
-              <DialogTitle>TAX DECLARATION OF REAL PROPERTY</DialogTitle>
-            </Typography>
-          </Box>
-          <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: 0, p: 3,}}>
+        <DialogTitle
+          id="scroll-dialog-title"
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            p: 2.5,
+            backgroundColor: "rgba(69, 116, 204)",
+            color: '#ffffff',
+            fontWeight: 600, // Correct weight for semi-bold
+          }}
+        >
+          TAX DECLARATION OF REAL PROPERTY
+        </DialogTitle>
+        <DialogContent dividers={scroll === 'paper'}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: '10px' }}>
-              <TextField id="outlined-basic" label="T.D. No." variant="outlined" />
-              <TextField id="outlined-basic" label="Property Identification No." variant="outlined" />
+              <TextField id="td-no" label="T.D. No." variant="outlined" sx={{ width: '45%' }} />
+              <TextField id="property-id-no" label="Property Identification No." variant="outlined" sx={{ width: '45%' }} />
             </Box>
 
             <fieldset>
@@ -171,9 +185,12 @@ export default function TaxDecModal() {
               <TextField sx={{width: '100%'}} id="outlined-multiline-flexible" label="Memoranda" multiline maxRows={4} />
               </Box>
             </fieldset>
-          </Box>
-        </Box>
-      </Modal>
-    </div>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Submit</Button>
+        </DialogActions>
+      </Dialog>
+    </React.Fragment>
   );
 }
