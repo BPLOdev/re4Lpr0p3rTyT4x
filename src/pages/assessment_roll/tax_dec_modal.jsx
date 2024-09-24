@@ -60,7 +60,7 @@ export default function TaxDecModal() {
       <Button
         onClick={handleClickOpen('paper')}
         sx={{
-          backgroundColor: "rgba(69, 116, 204)",
+          backgroundColor: "primary.main",
           color: "white",
           maxWidth: "100%",
           width: "140px",
@@ -87,7 +87,7 @@ export default function TaxDecModal() {
             display: 'flex',
             justifyContent: 'center',
             p: 2.5,
-            backgroundColor: "rgba(69, 116, 204)",
+            backgroundColor: "primary.main",
             color: '#ffffff',
             fontWeight: 600, // Correct weight for semi-bold
           }}
@@ -162,7 +162,7 @@ export default function TaxDecModal() {
             </fieldset>
               <Box sx={{  display: 'flex', justifyContent: 'end', mb: '10px',}}>
                 <Button sx={{
-                  backgroundColor: "rgba(69, 116, 204)",
+                  backgroundColor: "primary.main",
                   color: "white",
                   maxWidth: "100%",
                   width: "18%",
@@ -198,7 +198,7 @@ export default function TaxDecModal() {
             </fieldset>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose} sx={{color: 'rgb(168, 37, 37)'}}>Cancel</Button>
           <Button onClick={handleClose}>Submit</Button>
         </DialogActions>
       </Dialog>
