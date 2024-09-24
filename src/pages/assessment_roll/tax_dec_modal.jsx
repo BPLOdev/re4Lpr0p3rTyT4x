@@ -160,7 +160,18 @@ export default function TaxDecModal() {
               <FormControlLabel sx={{flexGrow: 1}} control={<Checkbox />} label="TAXABLE" />
               <FormControlLabel sx={{flexGrow: 1}} control={<Checkbox />} label="EXEMPT" />
             </fieldset>
-
+              <Box sx={{  display: 'flex', justifyContent: 'end', mb: '10px',}}>
+                <Button sx={{
+                  backgroundColor: "rgba(69, 116, 204)",
+                  color: "white",
+                  maxWidth: "100%",
+                  width: "18%",
+                  height: "40px",
+                  display: "flex",
+                  alignItems: "center",}}>
+                  Add Classification
+                </Button>
+              </Box>
             <fieldset>
               <legend>CLASSIFICATION</legend>
               <TextField sx={{flexGrow: 1, width: '6vw'}} id="outlined-basic" label="Classification" variant="outlined" />
