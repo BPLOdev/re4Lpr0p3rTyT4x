@@ -26,7 +26,7 @@ const Login = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3000/login", {
+      .post("http://192.168.1.26:3000/login", {
         email: email,
         password: password,
       })

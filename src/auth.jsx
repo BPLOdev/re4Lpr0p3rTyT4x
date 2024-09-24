@@ -13,11 +13,14 @@ export const AuthProvider = ({ children }) => {
     try {
       const token = Cookies.get("token");
       if (token) {
-        const response = await axios.get("http://localhost:3000/checkToken", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          "http://192.168.1.26:3000/checkToken",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         console.log("Token is valid:", response.data);
         setIsAuthenticated(true);
       } else {
