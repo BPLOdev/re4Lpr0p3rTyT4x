@@ -1,16 +1,70 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.scss";
 import logo from "../../assets/images/favicon.svg";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import axios, { Axios } from "axios";
+import Cookies from "js-cookie";
+import { AuthContext } from "../../auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setToken] = useState(Cookies.get("token") || null);
+
+  const { isAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    } else {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    axios
+      .post("http://localhost:3000/login", {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        const { data } = response; // Extract data from the response
+
+        if (data.message === "Login successful") {
+          setEmail("");
+          setPassword("");
+          console.log("Login successful:", data);
+          Cookies.set("token", data.token, { expires: 7, secure: true });
+          setToken(data.token);
+          navigate("/");
+          // Redirect on successful login
+        } else if (data.message === "No user found with this email") {
+          console.log("No user found:", data);
+          navigate("/login"); // Redirect to login if no user found
+        } else {
+          console.log("Unexpected response:", data);
+          console.log("No data in response");
+          navigate("/login"); // Redirect on unexpected response
+        }
+      })
+      .catch((error) => {
+        if (error.response) {
+          // Server responded with a status other than 2xx
+          console.error("Error response from server:", error.response.data);
+          navigate("/login"); // Redirect on server error
+        } else if (error.request) {
+          // No response was received
+          console.error("No response received:", error.request);
+          navigate("/login"); // Redirect on network error
+        } else {
+          // Error setting up the request
+          console.error("Error during request setup:", error.message);
+          navigate("/login"); // Redirect on setup error
+        }
+      });
   };
   //comment here another one
   return (
