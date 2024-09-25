@@ -15,7 +15,7 @@ const columns = [
   {
     field: 'PropertyOwner',
     headerName: 'PROPERTY OWNER',
-    width: 200,
+    width: 300,
     editable: false,
     headerClassName: "data-grid-header",
   },
@@ -110,7 +110,7 @@ function AssessmentRoll() {
       </div>
 
 
-      <Box sx={{ height: '75vh', p: 2}}>
+      <Box sx={{ height: '75vh', maxWidth: '96.6vw', p: 2}}>
       <div className="table-header">
         <div className="table-title">
           <h3>ASSESSOR OFFICE</h3>
