@@ -14,7 +14,6 @@ const Layout = () => {
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
           transition: "margin 0.3s ease", // Smooth transition when sidebar toggles
         }}
       >

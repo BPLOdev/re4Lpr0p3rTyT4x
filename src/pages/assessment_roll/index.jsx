@@ -3,6 +3,13 @@ import "./index.scss";
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import TaxDecModal from "./tax_dec_modal";
+import MiniHeader from '../../components/ui/miniHeader/miniHeader';
+import Button from '@mui/material/Button';
+
+
+
+
+
 
 const columns = [
   {
@@ -95,6 +102,15 @@ function AssessmentRoll() {
 
   return (
     <>
+      <div className="miniHeader">
+        <MiniHeader
+          leftButton1="Assessment Roll"
+          leftButton2="Archive"
+        />
+      </div>
+
+
+      <Box sx={{ height: '75vh', p: 2}}>
       <div className="table-header">
         <div className="table-title">
           <h3>ASSESSOR OFFICE</h3>
@@ -104,8 +120,6 @@ function AssessmentRoll() {
           <TaxDecModal />
         </div>
       </div>
-
-      <Box sx={{ height: '65vh', maxWidth: '94vw' }}>
       <DataGrid
         rows={rows}
         columns={columns}
