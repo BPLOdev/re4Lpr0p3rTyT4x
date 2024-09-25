@@ -20,7 +20,7 @@ const boxStyle = {
 
 const style = {
   maxWidth: "100%",
-  width: "50%",
+  width: "55%",
   height: "95vh",
   bgcolor: "background.paper",
   borderRadius: '10px',
@@ -174,7 +174,7 @@ export default function TaxDecModal() {
               </Box>
             <fieldset>
               <legend>CLASSIFICATION</legend>
-              <TextField sx={{flexGrow: 1, width: '6vw'}} id="outlined-basic" label="Classification" variant="outlined" />
+              <TextField sx={{flexGrow: 1, width: '7vw'}} id="outlined-basic" label="Classification" variant="outlined" />
               <TextField sx={{flexGrow: 1, width: '5vw'}} id="outlined-basic" label="Area" variant="outlined" />
               <TextField sx={{flexGrow: 1}} id="outlined-basic" label="Market Value" variant="outlined" />
               <TextField sx={{flexGrow: 1}} id="outlined-basic" label="Actual Use" variant="outlined" />
