@@ -37,8 +37,11 @@ const Login = () => {
           setEmail("");
           setPassword("");
           console.log("Login successful:", data);
-          Cookies.set("token", data.token, { expires: 7, secure: true });
-          setToken(data.token);
+          Cookies.set("token", data.token, { expires: 7 }); // Expires in 7 days, secure flag if using HTTPS
+          console.log("Token set in cookie:", data.token);
+          var testCookies = Cookies.get("token");
+          console.log(testCookies);
+
           navigate("/");
           // Redirect on successful login
         } else if (data.message === "No user found with this email") {
