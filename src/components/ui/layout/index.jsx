@@ -10,13 +10,7 @@ const Layout = () => {
       <MiniDrawer />
 
       {/* Main Content */}
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          transition: "margin 0.3s ease", // Smooth transition when sidebar toggles
-        }}
-      >
+      <Box component="main">
         <Outlet />
       </Box>
     </Box>
