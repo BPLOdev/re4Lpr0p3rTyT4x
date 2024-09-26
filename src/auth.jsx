@@ -8,6 +8,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const checkToken = async () => {
     try {
@@ -30,12 +31,21 @@ export const AuthProvider = ({ children }) => {
       console.error("Error validating token:", error.message);
       setIsAuthenticated(false);
       navigate("/login");
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     checkToken();
   }, []);
+  if (loading) {
+    return (
+      <>
+        <div>loading</div>
+      </>
+    );
+  }
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, checkToken }}>
