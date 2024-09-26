@@ -22,6 +22,8 @@ import CreateNewFolderOutlinedIcon from "@mui/icons-material/CreateNewFolderOutl
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
+import LetterAvatars from '../avatar/avatar';
+
 
 const drawerWidth = 240;
 
@@ -153,6 +155,9 @@ export default function MiniDrawer() {
           >
             REAL PROPERTY TAX MANAGEMENT SYSTEM
           </Typography>
+          <Box sx={{ ml: 'auto' }}>
+            <LetterAvatars />
+          </Box>
         </Toolbar>
       </AppBar>
 

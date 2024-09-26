@@ -3,9 +3,19 @@ import "./index.scss";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import TaxDecModal from "./tax_dec_modal";
-import MiniHeader from "../../components/ui/miniHeader/miniHeader";
+
+import MiniHeader from '../../components/ui/miniHeader/miniHeader';
+
+
+
+
+
+
+
+
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
+
 
 const columns = [
   {
