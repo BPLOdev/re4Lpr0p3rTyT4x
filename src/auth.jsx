@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import Loading from "../src/pages/loading/index";
 
 const AuthContext = createContext();
 
@@ -42,7 +43,7 @@ export const AuthProvider = ({ children }) => {
   if (loading) {
     return (
       <>
-        <div>loading</div>
+        <Loading />
       </>
     );
   }
